@@ -18,13 +18,16 @@ class App extends Component {
         }
       }
     }
+    this.postNewComment = this.postNewComment.bind(this)
   }
 
   postNewComment(comment){
+    const comments = { ...this.state.comments }
+    const timestamp = Date.now()
+    comments[`comm-${timestamp}`] = comment
+
     this.setState({
-      comments:{
-        ...this.state.comments, comment
-      }
+      comments: comments
     })
   }
 
