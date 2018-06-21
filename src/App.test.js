@@ -3,28 +3,32 @@ import { shallow, mount, render } from 'enzyme'
 import App from './App'
 
 describe('<App />', () => {
-  it('renders without crashing', () => {
-    const wrapper = shallow(<App />)
+  const base = {
+    syncState: jest.fn()
+  }
+  
+  it('renders without crashing', () => {    
+    const wrapper = shallow(<App base={base}/>)
     expect(wrapper.length).toBe(1)
   })
 
   it('should have .container class', () => {
-    const wrapper = shallow(<App />)
+    const wrapper = shallow(<App base={base}/>)
     expect(wrapper.is('.container')).toBe(true)
   })
 
   it('shows Comments', () => {
-    const wrapper = shallow(<App />)
+    const wrapper = shallow(<App base={base}/>)
     expect(wrapper.find('Comments').length).toBe(1)
   })
 
   it('shows NewComment', () => {
-    const wrapper = shallow(<App />)
+    const wrapper = shallow(<App base={base}/>)
     expect(wrapper.find('NewComment').length).toBe(1)
   })
 
   it('adds a new comment to state when postNewComment is called', () => {
-    const wrapper = mount(<App />)
+    const wrapper = mount(<App base={base}/>)
     wrapper.instance().postNewComment({comment: 'automatic comment'})
     wrapper.instance().postNewComment({comment: 'automatic comment'})
     wrapper.instance().postNewComment({comment: 'automatic comment'})
