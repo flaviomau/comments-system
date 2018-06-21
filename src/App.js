@@ -14,11 +14,11 @@ class App extends Component {
       }
     }
     this.postNewComment = this.postNewComment.bind(this)
-
+/*
     this.refComments = base.syncState('comments', {
       context: this,
       state: 'comments'
-    })
+    })*/
   }
 
   postNewComment(comment){
